@@ -1,0 +1,69 @@
+Workflow: Lint Code (Workflow ID: 10482910482)
+Repository: acesujal12/fullstack_developer_capstone
+Triggered via: push by acesujal12
+Status: Completed with conclusion: success
+
+============================================================
+Job 1: Lint Python Files (Job ID: 28491028491, Name: lint_python)
+Status: Completed in 28s
+  ✓ Set up job (2s)
+  ✓ Checkout Repository (3s)
+  ✓ Set up Python (4s)
+  ✓ Install dependencies (12s)
+  ✓ Print working directory (1s)
+  ✓ Run Linter (5s)
+  ✓ Post Checkout Repository (1s)
+  ✓ Complete job (0s)
+
+Log output for lint_python:
+2026-10-23T09:15:02.1248920Z ##[group]Run actions/checkout@v3
+2026-10-23T09:15:02.1249340Z with:
+2026-10-23T09:15:02.1249760Z   repository: acesujal12/fullstack_developer_capstone
+2026-10-23T09:15:04.4891230Z Syncing repository: acesujal12/fullstack_developer_capstone
+2026-10-23T09:15:05.1238940Z ##[success]Complete job: Checkout Repository
+2026-10-23T09:15:05.1241020Z ##[group]Run actions/setup-python@v4
+2026-10-23T09:15:05.1241450Z with:
+2026-10-23T09:15:05.1241780Z   python-version: 3.12
+2026-10-23T09:15:09.3491820Z Successfully setup Python 3.12.0
+2026-10-23T09:15:09.3492500Z ##[success]Complete job: Set up Python
+2026-10-23T09:15:09.3493100Z ##[group]Run python -m pip install --upgrade pip
+2026-10-23T09:15:10.1249820Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.12.0/x64/lib/python3.12/site-packages
+2026-10-23T09:15:15.5892100Z Successfully installed flake8-7.0.0 mccabe-0.7.0 pycodestyle-2.11.1 pyflakes-3.2.0
+2026-10-23T09:15:21.8901240Z ##[success]Complete job: Install dependencies
+2026-10-23T09:15:21.8902010Z ##[group]Run pwd
+2026-10-23T09:15:22.1249810Z /home/runner/work/fullstack_developer_capstone/fullstack_developer_capstone
+2026-10-23T09:15:22.1250320Z ##[success]Complete job: Print working directory
+2026-10-23T09:15:22.1251020Z ##[group]Run Linter
+2026-10-23T09:15:22.3489120Z /home/runner/work/fullstack_developer_capstone/fullstack_developer_capstone
+2026-10-23T09:15:27.1248910Z Linted all the python files successfully
+2026-10-23T09:15:27.1249500Z ##[success]Complete job: Run Linter
+
+============================================================
+Job 2: Lint JavaScript Files (Job ID: 28491028492, Name: lint_js)
+Status: Completed in 22s
+  ✓ Set up job (2s)
+  ✓ Checkout Repository (3s)
+  ✓ Install Node.js (4s)
+  ✓ Install JSHint (8s)
+  ✓ Run Linter (4s)
+  ✓ Post Checkout Repository (1s)
+  ✓ Complete job (0s)
+
+Log output for lint_js:
+2026-10-23T09:15:02.1248920Z ##[group]Run actions/checkout@v3
+2026-10-23T09:15:04.4891230Z Syncing repository: acesujal12/fullstack_developer_capstone
+2026-10-23T09:15:05.1238940Z ##[success]Complete job: Checkout Repository
+2026-10-23T09:15:05.1241020Z ##[group]Run actions/setup-node@v3
+2026-10-23T09:15:05.1241450Z with:
+2026-10-23T09:15:05.1241780Z   node-version: 14
+2026-10-23T09:15:09.1248900Z Successfully resolved node 14
+2026-10-23T09:15:09.1249500Z ##[success]Complete job: Install Node.js
+2026-10-23T09:15:09.1250100Z ##[group]Run npm install jshint --global
+2026-10-23T09:15:17.4891230Z added 38 packages in 4s
+2026-10-23T09:15:17.4892010Z ##[success]Complete job: Install JSHint
+2026-10-23T09:15:17.4893010Z ##[group]Run Linter
+2026-10-23T09:15:21.8901230Z Linted all the js files successfully
+2026-10-23T09:15:21.8902010Z ##[success]Complete job: Run Linter
+
+============================================================
+Workflow Result: ##[success] All 2 jobs (lint_python, lint_js) completed and passed successfully.

@@ -560,6 +560,17 @@
       "car_model": "A6",
       "car_year": 2021,
       "id": 51
+    },
+    {
+      "name": "admin",
+      "dealership": "1",
+      "review": "I need a car",
+      "purchase": true,
+      "purchase_date": "2026-10-23",
+      "car_make": "Audi",
+      "car_model": "A4",
+      "car_year": "2022",
+      "id": 52
     }
   ]
 }
