@@ -549,6 +549,17 @@
       "car_make": "Cadillac",
       "car_model": "DeVille",
       "car_year": 1995
+    },
+    {
+      "name": "Test User",
+      "dealership": 1,
+      "review": "Fantastic dealership!",
+      "purchase": true,
+      "purchase_date": "2023-01-01",
+      "car_make": "Audi",
+      "car_model": "A6",
+      "car_year": 2021,
+      "id": 51
     }
   ]
 }

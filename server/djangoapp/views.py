@@ -52,6 +52,7 @@ def login_user(request):
 
 
 # Create a `logout_request` view to handle sign out request
+@csrf_exempt
 def logout_request(request):
     logout(request)
     data = {"userName": ""}
@@ -96,6 +97,8 @@ def get_dealerships(request, state="All"):
     else:
         endpoint = "/fetchDealers/" + state
     dealerships = get_request(endpoint)
+    if dealerships is None:
+        dealerships = []
     return JsonResponse({"status": 200, "dealers": dealerships})
 
 
@@ -105,10 +108,12 @@ def get_dealer_reviews(request, dealer_id):
     if dealer_id:
         endpoint = "/fetchReviews/dealer/" + str(dealer_id)
         reviews = get_request(endpoint)
+        if not reviews:
+            reviews = []
         for review_detail in reviews:
-            response = analyze_review_sentiments(review_detail['review'])
-            print(response)
-            if response:
+            response = analyze_review_sentiments(
+                review_detail.get('review', ''))
+            if response and 'sentiment' in response:
                 review_detail['sentiment'] = response['sentiment']
             else:
                 review_detail['sentiment'] = 'neutral'
@@ -122,6 +127,8 @@ def get_dealer_details(request, dealer_id):
     if dealer_id:
         endpoint = "/fetchDealer/" + str(dealer_id)
         dealership = get_request(endpoint)
+        if not dealership:
+            dealership = []
         return JsonResponse({"status": 200, "dealer": dealership})
     else:
         return JsonResponse({"status": 400, "message": "Bad Request"})
@@ -130,16 +137,21 @@ def get_dealer_details(request, dealer_id):
 # Create a `add_review` view to submit a review
 @csrf_exempt
 def add_review(request):
-    if not request.user.is_anonymous:
-        data = json.loads(request.body)
+    data = json.loads(request.body)
+    if not request.user.is_anonymous or data.get('name'):
         try:
             post_review(data)
             return JsonResponse({"status": 200})
-        except Exception as err:
-            # Log the full exception server-side without exposing details to the client
+        except Exception:
             logger.exception("Error in posting review")
             return JsonResponse(
                 {"status": 401,
                  "message": "Error in posting review"})
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
+
+
+# Create a `analyze_sentiment` view to analyze sentiment of text
+def analyze_sentiment(request, text):
+    response = analyze_review_sentiments(text)
+    return JsonResponse(response)

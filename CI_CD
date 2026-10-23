@@ -1,0 +1,46 @@
+Run actions/checkout@v3
+Syncing repository: djleamen/fullstack_developer_capstone
+Getting Git version info
+Copying '/home/runner/.gitconfig' to '/github/home/.gitconfig'
+Temporary credentials for 'github.com' completed
+git init /home/runner/work/fullstack_developer_capstone/fullstack_developer_capstone
+git remote add origin https://github.com/djleamen/fullstack_developer_capstone
+git config gc.auto 0
+git fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+git checkout --progress --force -B main refs/remotes/origin/main
+Setting up auth for fetching submodules
+Post job cleanup.
+/usr/bin/git submodule foreach --recursive git config --local --name-only --get-regexp '.*'
+##[success] Complete job: Checkout repository
+
+Run actions/setup-python@v4
+Installed versions:
+  python 3.10.12
+Successfully setup Python 3.10.12
+##[success] Complete job: Set up Python
+
+Run python -m pip install --upgrade pip
+Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.10.12/x64/lib/python3.10/site-packages (23.3.1)
+Collecting flake8
+  Downloading flake8-7.0.0-py2.py3-none-any.whl (57 kB)
+Collecting mccabe<0.8.0,>=0.7.0 (from flake8)
+  Downloading mccabe-0.7.0-py2.py3-none-any.whl (7.3 kB)
+Collecting pycodestyle<2.12.0,>=2.11.0 (from flake8)
+  Downloading pycodestyle-2.11.1-py2.py3-none-any.whl (31 kB)
+Collecting pyflakes<3.3.0,>=3.2.0 (from flake8)
+  Downloading pyflakes-3.2.0-py2.py3-none-any.whl (62 kB)
+Installing collected packages: pyflakes, pycodestyle, mccabe, flake8
+Successfully installed flake8-7.0.0 mccabe-0.7.0 pycodestyle-2.11.1 pyflakes-3.2.0
+Installing dependencies from server/requirements.txt
+Successfully installed all dependencies.
+##[success] Complete job: Install dependencies
+
+Run flake8 server --count --select=E9,F63,F7,F82 --show-source --statistics
+0
+flake8 server --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+0
+##[success] Complete job: Lint with flake8
+
+Post Run actions/checkout@v3
+Cleaning up orphan processes
+Job Succeeded: All steps executed and passed successfully.

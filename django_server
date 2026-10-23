@@ -1,0 +1,11 @@
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+October 23, 2026 - 08:30:00
+Django version 6.1.2, using settings 'djangoproj.settings'
+Starting WSGI development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+[23/Oct/2026 08:30:15] "GET / HTTP/1.1" 200 3240
+[23/Oct/2026 08:30:22] "GET /djangoapp/get_dealers HTTP/1.1" 200 872
+
